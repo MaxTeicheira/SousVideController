@@ -1,0 +1,55 @@
+#temp
+{
+    color: red;
+    font-size: 300%;
+    text-align: center;
+}
+
+#timetemptarget
+{
+    text-align: center;
+}
+
+#time, #target
+{
+    font-size: 75%;
+    /*display: inline-block;*/
+}
+
+#time_target {
+    /*position:relative;*/
+    /*bottom:0;*/
+    /*margin: 0 5px 5px 5px;*/
+}
+
+
+
+#time
+{
+    /*display: block;*/
+    /*float:left;*/
+    /*width: 95%;*/
+    padding: 20px;
+    
+}
+
+#target
+{
+    /*display: block;*/
+    /*float:right;*/
+    /*width:95%;*/
+    padding: 20px;
+
+}
+
+
+#arrow
+{
+
+
+}
+
+
+
+
+
