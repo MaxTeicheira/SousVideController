@@ -2,26 +2,65 @@
 <html>
 <head>
     <title>Electric Imp Test Site</title>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
-    <style href="/static/chui.ios-3.0.4.css"></style>
+    <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>-->
+    <link rel=stylesheet type=text/css href="{{url_for('static', filename='chui.ios-3.0.4.css')}}">
+    <script src="/static/chocolatechip-3.0.4.js"></script>
+    <script src="/static/chui-3.0.4.js"></script>
 </head>
 <body>
-    <h1>Testing the Imp</h1>
-    <br>
-    <h2>{{ state }}</h2>
-    <button id='test'>Led Toggle</button>
 
-    <ul class='list'>
-    <li>
-        <h3>People</h3>
-    </li>
-    <li>
-        <h3>Places</h3>
-    </li>
-    <li>
-        <h3>Food</h3>
-    </li>
-    </ul>
+
+    
+    
+    <nav>
+        <h1>Sous Vide Control</h1>
+    </nav>
+    <article id="main" class="current">
+        <section>
+            <ul class='list'>
+                <li class='nav' data-goto="presets">
+                    <h2>Presets</h2>
+                </li>
+                <li class='nav'>
+                    <h2>Other settings</h2>
+                </li>
+            </ul>
+        </section>
+    </article>
+
+
+
+    <nav class='next'>
+        <a href="#" class='button back'></a>
+        <h1>Presets</h1>
+    </nav>
+    <article id="presets" class="next">
+        <section>
+           <!--  <a class='button back'></a> -->
+            <h2>Meats</h2>
+            <ul class='list'>
+                <li>
+                    <h3>Steak</h3>
+                </li>
+                <li>
+                    <h3>Chicken</h3>
+                </li>
+            </ul>
+            <h2>Vegetables</h2>
+
+        </section>
+    </article>
+
+
+
+
+
+
+
+
+
+
+
 
     <script>
         var state = 0;
@@ -29,8 +68,14 @@
         $('#test').click(function(){
             console.log("Button click test");
             var a = $.ajax({
-                type: "GET",
+                type: "post",
                 url: "https://agent.electricimp.com/38G_5vTOSCQK",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "async": true,
+                    "Access-Control-Allow-Origin" : "*",
+                    "Accept": "text/plain"
+                },
                 data: {"led": state},
                 crossDomain: true,
                 dataType: 'jsonp',
