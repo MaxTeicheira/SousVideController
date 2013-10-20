@@ -32,9 +32,9 @@
                         <div id="timetemptarget">
                             <div id='time_target'>
                                 <span id='time'>5:00</span><span id='target'>135&#8457</span>
-                                <span style="clear:both;"></span>
+                                <!-- <span style="clear:both;"></span> -->
                             </div>
-                            <div id='temp'>130&#8457</div>
+                            <div id='temp'>130</div>
                             
                         </div>
                     </div>
@@ -95,6 +95,11 @@
 
 
     <script>
+        console.log($('#temp')[0].innerHTML);
+        console.log("Test");
+        //$('#temp')[0].text("test");
+        
+
         var state = 0;
         var OK = '';
         $('#test').click(function(){
@@ -122,8 +127,14 @@
             });
             console.log(state);
             state = 1-state;
-
         });
+
+        $('#temp').on('swiperight', function(){
+            $('#temp')[0].innerHTML = parseInt($('#temp')[0].innerHTML) + 1;
+
+      //  console.log($('#temp'));
+       // console.log("Test");
+       });
 
 
 
