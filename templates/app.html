@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+    <title>Electric Imp Test Site</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
+</head>
+<body>
+    <h1>Testing the Imp</h1>
+    <br>
+    <h2>{{ state }}</h2>
+    <button id='test'>Led Toggle</button>
+    <script>
+        var state = 0;
+        var OK = '';
+        $('#test').click(function(){
+            console.log("Button click test");
+            var a = $.ajax({
+                type: "GET",
+                url: "https://agent.electricimp.com/38G_5vTOSCQK",
+                data: {"led": state},
+                crossDomain: true,
+                dataType: 'jsonp',
+                success: function(data){
+                    console.log(data);
+                    console.log("Success Test");
+                },
+                error: function(data){
+                    console.log("Error:");
+                    console.log(data);
+                }
+            });
+            console.log(state);
+            state = 1-state;
+
+        });
+
+    </script>
+
+</body>
+
+</html>
