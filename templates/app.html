@@ -3,12 +3,26 @@
 <head>
     <title>Electric Imp Test Site</title>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
+    <style href="/static/chui.ios-3.0.4.css"></style>
 </head>
 <body>
     <h1>Testing the Imp</h1>
     <br>
     <h2>{{ state }}</h2>
     <button id='test'>Led Toggle</button>
+
+    <ul class='list'>
+    <li>
+        <h3>People</h3>
+    </li>
+    <li>
+        <h3>Places</h3>
+    </li>
+    <li>
+        <h3>Food</h3>
+    </li>
+    </ul>
+
     <script>
         var state = 0;
         var OK = '';
