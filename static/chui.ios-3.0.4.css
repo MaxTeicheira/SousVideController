@@ -25,6 +25,7 @@ html, body {
 }
 body {
    background-color: #efeff4;
+   /*background-color: #cd2626;*/
    font: normal 10pt/13pt HelveticaNeue, Helvetica, Sans-serif;
    -webkit-font-smoothing: subpixel-antialiased;
    -webkit-user-select: none;
@@ -251,6 +252,7 @@ article > section,
    ============================== */
 #global-nav {
    background-color: #f7f7f7;
+   /*background-color: #cd2626;*/
    border-bottom: solid 1px #a7a7aa;
    overflow: hidden;
 }

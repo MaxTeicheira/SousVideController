@@ -1,19 +1,30 @@
+
+
+
+body
+{
+    /*background-color: #cd2626;*/
+}
+
+
+
 #temp
 {
-    color: red;
-    font-size: 300%;
+    color: blue;
+    font-size: 500% !important;
+    font-weight: lighter !important;
     text-align: center;
 }
 
 #timetemptarget
-{
     text-align: center;
 }
 
 #time, #target
 {
     font-size: 75%;
-    /*display: inline-block;*/
+    /*di{
+splay: inline-block;*/
 }
 
 #time_target {
@@ -39,17 +50,11 @@
     /*float:right;*/
     /*width:95%;*/
     padding: 20px;
-
 }
 
 
-#arrow
-{
-
-
+section {
+    opacity: 0.5 !important;
+    margin: 10px 10px;
 }
-
-
-
-
 

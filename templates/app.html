@@ -1,23 +1,62 @@
 <!doctype html>
 <html>
 <head>
-    <title>Electric Imp Test Site</title>
+    <title>Sous Vide Controller</title>
     <meta name="viewport" content="user-scalable=0, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="apple-touch-icon"
+      sizes="114x114"
+      href="/static/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-startup-image"
+          media="(device-width: 320px)
+            and (-webkit-device-pixel-ratio: 2)"
+          href="/static/icons/apple-touch-startup-image-640x1096.png">
+
 
     <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>-->
     <link rel=stylesheet type=text/css href="{{url_for('static', filename='chui.ios-3.0.4.css')}}">
     <link rel=stylesheet type=text/css href="{{url_for('static', filename='app.css')}}">
     <script src="/static/chocolatechip-3.0.4.js"></script>
     <script src="/static/chui-3.0.4.js"></script>
+    <link rel=stylesheet href="/static/bub.css">
+
 </head>
 <body>
+<div class='bubbles'></div>
+<nav>
+    <h1>Clever Title</h1>
+</nav>
+
+<article id='main'>
+    <section>
+        <ul class='list'>
+            <li class='comp'>
+                <aside>
+                    <img href='/static/icons/steak.png'></img>
+                </aside>
+                <div>
+                    <h1 id='temp' style='font-color:blue;'>130&deg</h1>
+
+
+                </div>
+                <aside>
+                    <!-- <span>test</span> -->
+                </aside>
+
+            </li>
 
 
 
+        </ul>
+    </section>
+</article>
 
-    </div>
+<script src="/static/jquery.min.js"></script>
+<script src="/static/bub.js"></script>
+
+
+<!--
 
     <nav>
         <h1>Sous Vide Control</h1>
@@ -32,7 +71,6 @@
                         <div id="timetemptarget">
                             <div id='time_target'>
                                 <span id='time'>5:00</span><span id='target'>135&#8457</span>
-                                <!-- <span style="clear:both;"></span> -->
                             </div>
                             <div id='temp'>130</div>
                             
@@ -84,7 +122,7 @@
     </article>
 
  
-
+ -->
 
 
 
