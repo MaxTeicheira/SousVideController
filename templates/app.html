@@ -77,16 +77,16 @@
 
 
     $('#main').on('swiperight', function(){
-        var numr = parseInt($('#temp').html().slice(0,-1)) + 1;
+        var numr = parseInt($('#target').html().slice(0,-1)) + 1;
         //console.log(num.toString());
-        $('#temp').html(numr.toString() + '&deg');
+        $('#target').html(numr.toString() + '&deg');
     });
 
 
     $('#main').on('swipeleft', function(){
-        var numl = parseInt($('#temp').html().slice(0,-1)) - 1;
+        var numl = parseInt($('#target').html().slice(0,-1)) - 1;
         //console.log(num.toString());
-        $('#temp').html(numl.toString() + '&deg');
+        $('#target').html(numl.toString() + '&deg');
     });
 
     $('#temp').on('singletap', function(){
