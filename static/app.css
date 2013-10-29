@@ -15,7 +15,6 @@ body
     font-size: 100px !important;
     font-weight: 100 !important;
     text-align: center;
-    font: ;
 }
 
 #timetemptarget {
@@ -24,7 +23,7 @@ body
 
 #time, #target
 {
-    font-size: 75%;
+    /*font-size: 75%;*/
     /*di{
 splay: inline-block;*/
 }
@@ -51,24 +50,35 @@ splay: inline-block;*/
     /*display: block;*/
     /*float:right;*/
     /*width:95%;*/
-    padding: 20px;
+    /*padding: 20px;*/
+    text-align: center;
+    margin-top: -100px;
+    color:white;
+
 }
 
 
 section {
     /*background: rgba(0,0,0, 0.0);*/
-    margin: 10px 10px;
+    /*margin: 10px 10px;*/
 }
 
 li, ul
 {
     background-color: transparent !important;
-    border: transparent !important;
+    border-width:0px !important;
 }
 
 nav
 {
     visibility: hidden; 
+}
+
+img
+{
+    background-color:white;
+    border-radius: 15px;
+
 }
 
 

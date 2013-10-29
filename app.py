@@ -1,5 +1,5 @@
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
-import requests, os
+import requests, os, random
 
 DATABASE = '/tmp/app.db'
 DEGUB = True
@@ -13,7 +13,8 @@ app.config.from_object(__name__)
 
 @app.route('/')
 def main():
-    return render_template('app.html')
+    rand_num = random.random()
+    return render_template('app.html', rand_num=rand_num)
 
 @app.route('/test')
 def test():
