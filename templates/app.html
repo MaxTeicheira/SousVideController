@@ -48,19 +48,28 @@
 
 
 
+
         </ul>
     </section>
 </article>
+<select id='selecttemp'>
+
+
+</select>
+
 
 <script src="/static/jquery.min.js"></script>
 <script src="/static/bub.js"></script>
 <script>
-    console.log($('#temp').html().slice(0,-1));
+
+    $('#selecttemp').hide();
 
     document.ontouchstart = function(e){ 
     e.preventDefault(); 
 }
-
+    for(var i=110; i <181; i++){
+        $('#selecttemp').append("<option>" + i.toString() + "</option>");
+    }
 
 
     $('#main').on('swiperight', function(){
@@ -74,6 +83,17 @@
         var numl = parseInt($('#temp').html().slice(0,-1)) - 1;
         //console.log(num.toString());
         $('#temp').html(numl.toString() + '&deg');
+    });
+
+    $('#main').on('singletap', function(){
+        $('#selecttemp').show();
+        $('#selecttemp').focus();
+        $('#selecttemp').hide();
+    });
+
+    $('#selecttemp').change(function(){
+        console.log($('select option:selected'));
+        $('#temp').html($('select option:selected').html() + '&deg');
     });
 
 
