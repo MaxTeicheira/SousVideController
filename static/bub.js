@@ -13,11 +13,8 @@ function bubbles() {
   // Create the bubbles
   for (var i = 0; i < bubbleCount; i++) {
     $bubbles.append('<div class="bubble-container"><div class="bubble"></div></div>');
-      console.log(i);
-      console.log($bubbles);
 
   }
-    console.log($bubbles);
 
   // Now randomise the various bubble elements
   $bubbles.find('.bubble-container').each(function(){

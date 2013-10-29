@@ -16,10 +16,10 @@
 
     <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>-->
     <link rel=stylesheet type=text/css href="{{url_for('static', filename='chui.ios-3.0.4.css')}}">
-    <link rel=stylesheet type=text/css href="{{url_for('static', filename='app.css')}}">
+    <link rel=stylesheet type=text/css href="{{url_for('static', filename='app.css')}}?v=1">
     <script src="/static/chocolatechip-3.0.4.js"></script>
     <script src="/static/chui-3.0.4.js"></script>
-    <link rel=stylesheet href="/static/bub.css">
+    <link rel=stylesheet href="/static/bub.css?v=1">
 
 </head>
 <body>
@@ -36,7 +36,7 @@
                     <img href='/static/icons/steak.png'></img>
                 </aside>
                 <div>
-                    <h1 id='temp' style='font-color:blue;'>130&deg</h1>
+                    <h1 id='temp'>130&deg</h1>
 
 
                 </div>
@@ -54,6 +54,30 @@
 
 <script src="/static/jquery.min.js"></script>
 <script src="/static/bub.js"></script>
+<script>
+
+    document.ontouchstart = function(e){ 
+    e.preventDefault(); 
+}
+
+
+
+            // Create sheet and populate it:
+            $.UISheet();
+            $('.sheet').find('section').append("<ul class='list'></li>");
+            $('.sheet .list').append("<li><a class='button' href='javascript:void(null)'>Save</a></li><li><a class='button' href='javascript:void(null)'>Delete</a></li><li><a class='button' href='javascript:void(null)'>Cancel</a></li>");
+            $('.sheet .list').append ('<h2 style="text-align: center; margin: 20px;">The End</h2>');
+            
+            $('.sheet .list').on('singletap', '.button', function() {
+                $.UIHideSheet();
+            });
+            
+            // Initialize button to show sheet:
+            $('#temp').on('singletap', function() {
+                $.UIShowSheet();
+            });
+
+</script>
 
 
 <!--
@@ -133,15 +157,12 @@
 
 
     <script>
-        console.log($('#temp')[0].innerHTML);
-        console.log("Test");
         //$('#temp')[0].text("test");
         
 
         var state = 0;
         var OK = '';
         $('#test').click(function(){
-            console.log("Button click test");
             var a = $.ajax({
                 type: "post",
                 url: "https://agent.electricimp.com/38G_5vTOSCQK",
