@@ -55,6 +55,7 @@
 <script src="/static/jquery.min.js"></script>
 <script src="/static/bub.js"></script>
 <script>
+    console.log($('#temp').html().slice(0,-1));
 
     document.ontouchstart = function(e){ 
     e.preventDefault(); 
@@ -62,20 +63,38 @@
 
 
 
+    $('#main').on('swiperight', function(){
+        var numr = parseInt($('#temp').html().slice(0,-1)) + 1;
+        //console.log(num.toString());
+        $('#temp').html(numr.toString() + '&deg');
+    });
+
+
+    $('#main').on('swipeleft', function(){
+        var numl = parseInt($('#temp').html().slice(0,-1)) - 1;
+        //console.log(num.toString());
+        $('#temp').html(numl.toString() + '&deg');
+    });
+
+
+
+
+
+
             // Create sheet and populate it:
-            $.UISheet();
-            $('.sheet').find('section').append("<ul class='list'></li>");
-            $('.sheet .list').append("<li><a class='button' href='javascript:void(null)'>Save</a></li><li><a class='button' href='javascript:void(null)'>Delete</a></li><li><a class='button' href='javascript:void(null)'>Cancel</a></li>");
-            $('.sheet .list').append ('<h2 style="text-align: center; margin: 20px;">The End</h2>');
+            // $.UISheet();
+            // $('.sheet').find('section').append("<ul class='list'></li>");
+            // $('.sheet .list').append("<li><a class='button' href='javascript:void(null)'>Save</a></li><li><a class='button' href='javascript:void(null)'>Delete</a></li><li><a class='button' href='javascript:void(null)'>Cancel</a></li>");
+            // $('.sheet .list').append ('<h2 style="text-align: center; margin: 20px;">The End</h2>');
             
-            $('.sheet .list').on('singletap', '.button', function() {
-                $.UIHideSheet();
-            });
+            // $('.sheet .list').on('singletap', '.button', function() {
+            //     $.UIHideSheet();
+            // });
             
-            // Initialize button to show sheet:
-            $('#temp').on('singletap', function() {
-                $.UIShowSheet();
-            });
+            // // Initialize button to show sheet:
+            // $('#temp').on('singletap', function() {
+            //     $.UIShowSheet();
+            // });
 
 </script>
 
@@ -188,8 +207,7 @@
             state = 1-state;
         });
 
-        $('body').on('swiperight', function(){
-            $('#temp')[0].innerHTML = parseInt($('#temp')[0].innerHTML) + 1;
+        
 
       //  console.log($('#temp'));
        // console.log("Test");
