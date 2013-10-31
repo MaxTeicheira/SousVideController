@@ -81,4 +81,12 @@ img
 
 }
 
+#graph {
+    display:inline;
+}
+
+#canvasContainer {
+    width: 100%;
+    text-align:center;
+}
 

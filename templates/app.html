@@ -14,11 +14,12 @@
           href="/static/icons/apple-touch-startup-image-640x1096.png?v={{ rand_num }}">
 
 
-    <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>-->
+    <!-- // <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script> -->
     <link rel=stylesheet type=text/css href="{{url_for('static', filename='chui.ios-3.0.4.css')}}">
     <link rel=stylesheet type=text/css href="{{url_for('static', filename='app.css')}}?v={{ rand_num }}">
     <script src="/static/chocolatechip-3.0.4.js"></script>
     <script src="/static/chui-3.0.4.js"></script>
+    <script src="/static/Chart.js"></script>
     <link rel=stylesheet href="/static/bub.css?v={{ rand_num }}">
 
 </head>
@@ -49,16 +50,15 @@
                 <!-- <img src="/static/icons/steak.png"> -->
                 <!-- <img src="/static/icons/chicken.png"> -->
 
-
-
+            <div id='canvasContainer'>
+            <canvas id='chart' width='300' height='200'></canvas>
+            </div>
 
 
         </ul>
     </section>
 </article>
 <select id='selecttemp'>
-
-
 </select>
 
 
@@ -66,38 +66,77 @@
 <script src="/static/bub.js?v={{ rand_num }}"></script>
 <script>
 
+
+
+
     $('#selecttemp').hide();
 
+    //Prevent IOS from Scrolling around and annoying the user
     document.ontouchstart = function(e){ 
     e.preventDefault(); 
 }
-    for(var i=110; i <181; i++){
+
+    //Create select form options
+    var minTemp = 110;
+    var maxTemp = 181;
+    for(var i=minTemp; i < maxTemp; i++){
         $('#selecttemp').append("<option>" + i.toString() + "</option>");
     }
 
-
-    $('#main').on('swiperight', function(){
+    
+    //
+    //Guesture functions
+    //
+    
+    //Swipe right to incrememt temp
+    $('#main').on('swipeup', function(){
         var numr = parseInt($('#target').html().slice(0,-1)) + 1;
-        //console.log(num.toString());
         $('#target').html(numr.toString() + '&deg');
+        get_target_temp_line(data.datasets[0].data); //Update chart data
+        c.Line(data, options); //update chart
     });
 
-
-    $('#main').on('swipeleft', function(){
+    //Swipe left to decrement temp
+    $('#main').on('swipedown', function(){
         var numl = parseInt($('#target').html().slice(0,-1)) - 1;
-        //console.log(num.toString());
         $('#target').html(numl.toString() + '&deg');
+        get_target_temp_line(data.datasets[0].data);
+        c.Line(data, options);
     });
 
+    //Key arrow down and up
+    document.onkeydown = checkKey;
+
+    function checkKey(event){
+        event = event || window.event;
+
+        if (event.keyCode == '38')  {//up arrow
+            var numr = parseInt($('#target').html().slice(0,-1)) + 1;
+            $('#target').html(numr.toString() + '&deg');
+            get_target_temp_line(data.datasets[0].data); //Update chart data
+            c.Line(data, options); //update chart
+        }
+        if (event.keyCode == '40')  {
+            var numl = parseInt($('#target').html().slice(0,-1)) - 1;
+            $('#target').html(numl.toString() + '&deg');
+            get_target_temp_line(data.datasets[0].data);
+            c.Line(data, options);
+        }
+    }
+ 
+    
+    //
+    //Singletap to bring up a  select form box to selct temp
     $('#temp').on('singletap', function(){
         $('#selecttemp').show();
         $('#selecttemp').focus();
         $('#selecttemp').hide();
     });
-
+    //Part of select box to change temp
     $('#selecttemp').change(function(){
-        console.log($('select option:selected'));
         $('#target').html($('select option:selected').html() + '&deg');
+        get_target_temp_line(data.datasets[0].data);
+        c.Line(data, options);
     });
 
 
@@ -105,91 +144,65 @@
 
 
 
-            // Create sheet and populate it:
-            // $.UISheet();
-            // $('.sheet').find('section').append("<ul class='list'></li>");
-            // $('.sheet .list').append("<li><a class='button' href='javascript:void(null)'>Save</a></li><li><a class='button' href='javascript:void(null)'>Delete</a></li><li><a class='button' href='javascript:void(null)'>Cancel</a></li>");
-            // $('.sheet .list').append ('<h2 style="text-align: center; margin: 20px;">The End</h2>');
-            
-            // $('.sheet .list').on('singletap', '.button', function() {
-            //     $.UIHideSheet();
-            // });
-            
-            // // Initialize button to show sheet:
-            // $('#temp').on('singletap', function() {
-            //     $.UIShowSheet();
-            // });
+
+
+
+
+
+    
+    var ctx = $('#chart').get(0).getContext('2d');
+
+    var data = {
+        labels : ["5:00", "5:10", "5:20", "5:30", "5:40", "5:50", "6:00"],
+        datasets : [
+            {
+                fillColor : "rgba(220,220,220,0.0)",
+                strokeColor : "rgba(220,220,220,1)",
+                data : [76, 95, 108, 118, 127, 134, 131]
+            },
+            {
+                fillColor: "rgba(220,220,220,0.0)",
+                strokeColor: 'blue',
+                pointColor: "rgba(220,220,220,0.0)",
+                pointStrokeColor : "rgba(220,220,220,0.0)",
+                data : [0]
+            }
+
+        ]
+    }
+
+    function get_target_temp_line(times){
+        var target_temp = parseInt($('#target').html().slice(0,-1));
+        data.datasets[1].data = [];
+        $.each(times, function(index, element){
+            data.datasets[1].data.push(target_temp);
+        });
+    }
+
+   
+
+
+
+
+
+    var options = {
+        scaleShowGridLines : false,
+        scaleFontFamily : "-apple-system-font",
+        scaleFontColor: "white",
+        scaleLineColor : "rgba(255,255,255,1)",
+        animation: "linear"
+  
+    }
+    var c = new Chart(ctx);
+
+    get_target_temp_line(data.datasets[0].data);
+    c.Line(data, options);
+    c.Line(data, options);
+
+
 
 </script>
 
-
-<!--
-
-    <nav>
-        <h1>Sous Vide Control</h1>
-
-    </nav>
-    <article id="main" class="current">
-        <section>
-            <ul class='list'>
-                <li class='comp'>
-                    <div id='main_display'>
-                        <div id='updown'>Up</div>
-                        <div id="timetemptarget">
-                            <div id='time_target'>
-                                <span id='time'>5:00</span><span id='target'>135&#8457</span>
-                            </div>
-                            <div id='temp'>130</div>
-                            
-                        </div>
-                    </div>
-                </li>
-            </ul>
-            <ul class='list'>
-                <li class='nav' data-goto="presets">
-                    <h1>Presets</h1>
-                </li>
-                <li class='nav'>
-                    <h1>Other settings</h1>
-                </li>
-            </ul>
-        </section>
-    </article>
-
-
-
-    <nav class='next'>
-        <a href="#" class='button back'></a>
-        <h1>Presets</h1>
-    </nav>
-    <article id="presets" class="next">
-        <section>
-          <a class='button back'></a> 
-            <h2>Meats</h2>
-            <ul class='list'>
-                <li>
-                    <h3>Steak</h3>
-                    <h4>130F - 150F</h4>
-                    <ul class='list'>
-                        <li>
-                            <h3>Rare: 130F</h3>
-                        </li>
-                        <li>
-                            <h3>Medium: 135-140F</h3>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <h3>Chicken</h3>
-                </li>
-            </ul>
-            <h2>Vegetables</h2>
-
-        </section>
-    </article>
-
- 
- -->
 
 
 
@@ -200,44 +213,39 @@
 
 
     <script>
-        //$('#temp')[0].text("test");
-        
+        function ajax_electric(){
 
-        var state = 0;
-        var OK = '';
-        $('#test').click(function(){
-            var a = $.ajax({
-                type: "post",
-                url: "https://agent.electricimp.com/38G_5vTOSCQK",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                    "async": true,
-                    "Access-Control-Allow-Origin" : "*",
-                    "Accept": "text/plain"
-                },
-                data: {"led": state},
-                crossDomain: true,
-                dataType: 'jsonp',
-                success: function(data){
-                    console.log(data);
-                    console.log("Success Test");
-                },
-                error: function(data){
-                    console.log("Error:");
-                    console.log(data);
-                }
+            var state = 0;
+            var OK = '';
+            $('#test').click(function(){
+                var a = $.ajax({
+                    type: "post",
+                    url: "https://agent.electricimp.com/38G_5vTOSCQK",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        "async": true,
+                        "Access-Control-Allow-Origin" : "*",
+                        "Accept": "text/plain"
+                    },
+                    data: {"led": state},
+                    crossDomain: true,
+                    dataType: 'jsonp',
+                    success: function(data){
+                        console.log(data);
+                        console.log("Success Test");
+                    },
+                    error: function(data){
+                        console.log("Error:");
+                        console.log(data);
+                    }
+                });
+                console.log(state);
+                state = 1-state;
             });
-            console.log(state);
-            state = 1-state;
-        });
+         }
+
 
         
-
-      //  console.log($('#temp'));
-       // console.log("Test");
-       
-
-
 
 
 

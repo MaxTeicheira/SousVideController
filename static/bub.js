@@ -76,6 +76,5 @@ $('a').click(function(){
   
   return false;
 });
-console.log("TESasdfasdfT");
 
 bubbles();
