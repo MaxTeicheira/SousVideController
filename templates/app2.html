@@ -2,9 +2,9 @@
 <html>
 <head>
     <title>Sous Vide Controller</title>
-    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+    <meta name="viewport" content="user-scalable=0, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <link rel="apple-touch-icon"
       sizes="114x114"
       href="/static/icons/apple-touch-icon-114x114.png?v={{ rand_num }}">
@@ -19,7 +19,7 @@
     <link rel=stylesheet type=text/css href="{{url_for('static', filename='app.css')}}?v={{ rand_num }}">
     <script src="/static/chocolatechip-3.0.4.js"></script>
     <script src="/static/chui-3.0.4.js"></script>
-    <script src="/static/Chart.js"></script>
+    <!--<script src="/static/Chart.js"></script>-->
     <link rel=stylesheet href="/static/bub.css?v={{ rand_num }}">
     <style type="text/css">
 
@@ -41,43 +41,53 @@
 
 </head>
 <body>
-<div class='bubbles'></div>
-<nav>
-    <!-- <h1>Clever Title</h1> -->
+
+
+
+
+
+<!-- <nav class='current'>
+  <h1>Sous Vide</h1>
 </nav>
-
-<article id='main'>
-    <section>
-        <ul class='list'>
-            <li class='comp'>
-                <aside>
-                </aside>
-                <div>
-                    <h1 id='temp'>130&deg</h1>
-                    <h3 id='target'>135&deg</h3>
-                    <h1 id='arrow'></h1>
-
-
-                </div>
-                <aside>
-                    <!-- <span>test</span> -->
-                </aside>
-
-            </li>
-
-                <!-- <img src="/static/icons/steak.png"> -->
-                <!-- <img src="/static/icons/chicken.png"> -->
-
-            <div id='canvasContainer'>
-            <!-- <canvas id='chart' width='300' height='200'></canvas> -->
-            </div>
-
-
-        </ul>
-    </section>
+<article id='main' class='current'>
+    Food Choices
 </article>
-<select id='selecttemp'>
-</select>
+<nav class='next'>
+  <h1>My App</h1>
+</nav>
+<article id='Steak' class='next'>
+    <img src="/static/icons/steak.png">
+</article>
+<nav class='next'>
+  <h1>My App</h1>
+</nav>
+<article id='Chicken' class='next'>
+    <img src="/static/icons/chicken.png">
+
+</article>
+ -->
+<nav><h1>Sous vide</h1></nav>
+ <h2>Sous Vide Choices</h2>
+ <ul class='list'>
+    <li class='comp'>
+        <aside>
+            <img src="/static/icons/steak.png">
+        </aside>
+        <div>Steak</div>
+    </li>
+    <li class='comp'>
+        <aside>
+            <img src="/static/icons/chicken.png">
+        </aside>
+        <div>Chicken</div>
+    </li>
+ </ul>
+
+
+
+
+
+<div class='bubbles'></div>
 
 
 <script src="/static/jquery.min.js"></script>

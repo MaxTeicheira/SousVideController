@@ -65,18 +65,19 @@ section {
 
 li, ul
 {
-    background-color: transparent !important;
+    /*background-color: transparent !important;*/
+    background-color: rgba(0, 0, 0, 0.08) !important ;
     border-width:0px !important;
 }
 
 nav
 {
-    visibility: hidden; 
+    /*visibility: hidden; */
 }
 
 img
 {
-    background-color:white;
+    /*background-color:white;*/
     border-radius: 15px;
 
 }

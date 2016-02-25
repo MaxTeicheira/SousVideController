@@ -20,6 +20,9 @@ def main():
 def test():
     return render_template('test.html')
 
+@app.route('/2')
+def test2():
+  return render_template('app2.html')
 
 
 if  __name__ == '__main__':
