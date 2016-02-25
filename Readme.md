@@ -3,17 +3,11 @@
 ##Usage
 
 Running server on through terminal
-<<<<<<< HEAD
+
 ```
 python app.py
 ```
 
-
-=======
-'''
-python app.py
-'''
->>>>>>> d34a4d3527749a6a47d3b4f1c5305dbc0c742d68
 
 ##Todo
 * [ ] Minify JS and css files
