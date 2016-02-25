@@ -1,5 +1,11 @@
 #SousVideController
 
+##Usage
+
+Running server on through terminal
+'''
+python app.py
+'''
 
 ##Todo
 * [ ] Minify JS and css files
