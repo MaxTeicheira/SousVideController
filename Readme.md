@@ -7,7 +7,7 @@ Running server on through terminal
 ```
 python app.py
 ```
-Open web browser to [localhost:5000](http://localhost:5000).
+Open web browser to [localhost:5000](http://localhost:5000)
 
 
 ##Todo
